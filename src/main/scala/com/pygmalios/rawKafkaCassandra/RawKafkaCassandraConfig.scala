@@ -15,7 +15,7 @@ trait GenericRawKafkaCassandraConfig {
   def kafkaConfig = config.getConfig("kafka")
   def kafkaBrokersConfig: List[String] = kafkaConfig.getStringList("brokers").toList
   def kafkaZooKeeperHostConfig = kafkaConfig.getString("zooKeeperHost")
-  def kafkaTopicsConfig: List[String] = kafkaConfig.getStringList("topics").toList
+  def kafkaTopicsConfig: List[String] = kafkaConfig.getString("topics").split(",").toList
   def kafkaConsumerGroupIdConfig = kafkaConfig.getString("consumerGroupId")
 
   // Cassandra configuration
